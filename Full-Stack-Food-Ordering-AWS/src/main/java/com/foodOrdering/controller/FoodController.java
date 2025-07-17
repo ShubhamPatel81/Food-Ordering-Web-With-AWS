@@ -1,4 +1,4 @@
-package com.foodOrdering.service.controller;
+package com.foodOrdering.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,7 +22,7 @@ public class FoodController {
 private final FoodService foodService;
     @PostMapping
     public FoodResponse addFood(@RequestPart("food")String foodString,
-                                          @RequestPart("file")MultipartFile file){
+                                          @RequestPart("file") MultipartFile file){
         ObjectMapper objectMapper = new ObjectMapper();
         FoodRequest request =null;
         try {

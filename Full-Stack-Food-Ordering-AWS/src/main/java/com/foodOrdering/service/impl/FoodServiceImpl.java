@@ -34,7 +34,7 @@ public class FoodServiceImpl implements FoodService {
     private  FoodRepository foodRepository ;
     @Override
     public String uploadFile(MultipartFile file) {
-       String fileNameExtension=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1);
+        String fileNameExtension=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".")+1);
         String key= UUID.randomUUID().toString()+"."+fileNameExtension;
         try {
             PutObjectRequest putObjectRequest = PutObjectRequest.builder()
@@ -57,24 +57,24 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public FoodResponse addFood(FoodRequest request, MultipartFile file) {
-       FoodEntity newFoodEntity = convertToEntity(request);
-       String imageUrl= uploadFile(file);
+        FoodEntity newFoodEntity = convertToEntity(request);
+        String imageUrl= uploadFile(file);
         newFoodEntity.setImageUrl(imageUrl);
-      newFoodEntity=  foodRepository.save(newFoodEntity);
-    return convertToResponse(newFoodEntity);
+        newFoodEntity=  foodRepository.save(newFoodEntity);
+        return convertToResponse(newFoodEntity);
     }
 
     @Override
     public List<FoodResponse> readFoods() {
         List<FoodEntity> foodEntities = foodRepository.findAll();
-       return foodEntities.stream()
+        return foodEntities.stream()
                 .map(this::convertToResponse).collect(Collectors.toList());
     }
 
     @Override
     public FoodResponse readFoodById(String id) {
-      FoodEntity foodEntity =  foodRepository.findById(id).orElseThrow(()->new RuntimeException("Food is not found by the given id +"+ id));
-      return  convertToResponse(foodEntity);
+        FoodEntity foodEntity =  foodRepository.findById(id).orElseThrow(()->new RuntimeException("Food is not found by the given id +"+ id));
+        return  convertToResponse(foodEntity);
     }
 
     @Override
@@ -92,15 +92,15 @@ public class FoodServiceImpl implements FoodService {
     public void deleteFood(String id) {
         FoodResponse response = readFoodById(id);
         String imageUrl= response.getImageUrl();
-      String filename=  imageUrl.substring(imageUrl.lastIndexOf("/")+1);
-       boolean isFileDeleted =deletefile(filename);
-       if (isFileDeleted){
-           foodRepository.deleteById(response.getId());
-       }
+        String filename=  imageUrl.substring(imageUrl.lastIndexOf("/")+1);
+        boolean isFileDeleted =deletefile(filename);
+        if (isFileDeleted){
+            foodRepository.deleteById(response.getId());
+        }
     }
 
     private FoodEntity convertToEntity(FoodRequest request){
-       return FoodEntity.builder()
+        return FoodEntity.builder()
                 .name(request.getName())
                 .description(request.getDescription())
                 .category(request.getCategory())
@@ -108,7 +108,7 @@ public class FoodServiceImpl implements FoodService {
                 .build();
     }
     private FoodResponse convertToResponse(FoodEntity foodEntity){
-      return   FoodResponse.builder()
+        return   FoodResponse.builder()
                 .id(foodEntity.getId())
                 .name(foodEntity.getName())
                 .description(foodEntity.getDescription())
