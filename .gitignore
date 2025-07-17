@@ -1,0 +1,19 @@
+# Ignore folders
+node_modules/
+dist/
+build/
+.env/
+startbootstrap-simple-sidebar-gh-pages/
+.vscode/
+.idea/
+
+# Ignore files
+.DS_Store
+*.log
+*.env
+*.zip
+
+
+
+# Ignore any `.bak` backup files
+*.bak
