@@ -1,0 +1,8 @@
+.logo {
+  margin: 20px;
+}
+.menuBar-right {
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+}

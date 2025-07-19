@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { assets } from "../../assets/assets";
 import axios from "axios";
+import { addFood } from "../../services/FoodService";
+import { toast } from "react-toastify";
 
 const AddFood = () => {
   const [image, setImage] = useState(null);
@@ -28,32 +30,20 @@ const AddFood = () => {
       alert("Please Upload the image ");
       return;
     }
-
-    const formData = new FormData();
-    formData.append("food", JSON.stringify(data));
-    formData.append("file", image);
-
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/foods",
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-      if (response.status == 201) {
-        alert("Food Added Successfully!!!");
-        setFormData({
-          name: "",
-          description: "",
-          category: "pizza",
-          price: "",
-        });
-        setImage(null);
-      }
+      await addFood(data, image);
+      toast.success("Food added successfully!");
+      setFormData({
+        name: "",
+        category: "pizza",
+        price: "",
+        description: "",
+      });
+      setImage(null);
     } catch (error) {
-      console.log("Error ",error);
-      alert("Error on adding the food !! ")
+      console.error("Error submitting form:", error);
+      toast.error("Error submitting add Food form. Please try again.");
+      return;
     }
   };
   return (
@@ -69,6 +59,7 @@ const AddFood = () => {
                   Name
                 </label>
                 <input
+                  placeholder="Enter food name"
                   type="text"
                   className="form-control"
                   id="name"
@@ -107,6 +98,7 @@ const AddFood = () => {
                   Price
                 </label>
                 <input
+                  placeholder="Enter food price"
                   type="number"
                   className="form-control"
                   id="price"
@@ -123,6 +115,7 @@ const AddFood = () => {
                   Description
                 </label>
                 <textarea
+                  placeholder="Enter food description"
                   className="form-control"
                   id="description"
                   rows={5}
