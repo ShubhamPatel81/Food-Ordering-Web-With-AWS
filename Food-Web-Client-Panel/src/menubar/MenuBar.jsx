@@ -8,8 +8,15 @@ const MenuBar = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container">
-          <img src={assets.logo} alt="Logo" height={49} width={102} />
-
+          <Link to="/">
+            <img
+              src={assets.logo}
+              alt="Logo"
+              height={49}
+              width={102}
+              style={{ cursor: "pointer" }}
+            />
+          </Link>
           <button
             className="navbar-toggler"
             type="button"

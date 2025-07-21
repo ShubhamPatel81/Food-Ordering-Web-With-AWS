@@ -9,9 +9,9 @@ function Header() {
           <h1 className="display-4 fw-bold ">Order Your Food Here </h1>
           <p className="col-md-8 fs-4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-            ratione repellendus, in nemo nisi libero doloremque 
+            ratione repellendus, in nemo nisi libero doloremque
           </p>
-          <Link to="/explore" className="btn btn-primary btn-lg">
+          <Link to="/explore" className="btn btn-primary">
             Explore
           </Link>
         </div>

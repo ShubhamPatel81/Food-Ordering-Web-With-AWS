@@ -1,0 +1,43 @@
+.explore-menu-list::-webkit-scrollbar {
+  display: none;
+}
+.explore-menu-list {
+  overflow: auto; /* or scroll */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.explore-menu-list-item img {
+  cursor: pointer;
+}
+.explore-menu-list-item .active {
+  border: 5px solid rgb(224, 51, 21);
+  padding: 2px;
+}
+
+.explore-menu-list-item p {
+  color: #747474;
+  cursor: pointer;
+}
+.scroll-icon {
+  font-size: 2rem;
+  color: #747474;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+.scroll-icon:hover {
+  color: #e03315;
+}
+
+.explore-menu hr {
+  margin: 0;
+  border: none;
+  border-top: 2px solid #979797;
+  width: 100%;
+  margin-top: 10px;
+}
+.explore-menu-list-item .active {
+  border: 4px solid #e83f21;
+  padding: 6px;
+}
