@@ -1,0 +1,17 @@
+.needs-validation input {
+  margin-top: 8px;
+}
+.custom-select {
+  margin-top: 9px;
+}
+/* Remove spinner arrows in Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove spinner arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

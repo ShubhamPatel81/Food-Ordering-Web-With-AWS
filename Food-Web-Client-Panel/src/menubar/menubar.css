@@ -6,3 +6,7 @@
   gap: 20px;
   padding: 10px;
 }
+
+.active {
+  color: tomato !important;
+}

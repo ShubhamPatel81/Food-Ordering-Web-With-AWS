@@ -6,6 +6,8 @@ import ExploreFood from "./pages/Explore/ExploreFood.jsx";
 import ContactUs from "./pages/ContactUs/ContactUs.jsx";
 import Header from "./component/Header/Header.jsx";
 import FoodDetails from "./pages/FoodDetails/FoodDetails.jsx";
+import Cart from "./pages/Cart/Cart.jsx";
+import PlaceOrder from "./pages/PlaceOrder/PlaceOrder.jsx";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/explore" element={<ExploreFood />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/food/:id" element={<FoodDetails />} />
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/order" element={<PlaceOrder />}></Route>
       </Routes>
     </div>
   );
