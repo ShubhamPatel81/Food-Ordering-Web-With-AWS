@@ -1,0 +1,30 @@
+/* body {
+  background: #007bff;
+  background: linear-gradient(to right, #64a3f6, #33aeff);
+} */
+
+.login-container {
+  background-image: url("../../assets/images/login.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+.btn-google {
+  color: rgb(2, 1, 1) !important;
+  background-color: #be382c;
+}
+
+.btn-facebook {
+  color: rgb(20, 17, 17) !important;
+  background-color: #3b5998;
+}

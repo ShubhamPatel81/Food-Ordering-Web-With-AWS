@@ -1,7 +1,7 @@
 import "./menuBar.css";
 import assets from "../assets/assets.js";
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext.jsx";
 
 const MenuBar = () => {
@@ -11,6 +11,9 @@ const MenuBar = () => {
   const uniqueItemsInCart = Object.values(quantities).filter(
     (qty) => qty > 0
   ).length;
+
+  const navigate = useNavigate();
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -89,11 +92,23 @@ const MenuBar = () => {
                 </span>
               </div>
 
-              <button className="btn btn-outline-primary" type="submit">
+              <button
+                className="btn btn-outline-primary"
+                type="submit"
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
                 Login
               </button>
 
-              <button className="btn btn-outline-success" type="submit">
+              <button
+                className="btn btn-outline-success"
+                type="submit"
+                onClick={() => {
+                  navigate("/register");
+                }}
+              >
                 Register
               </button>
             </div>

@@ -1,19 +1,17 @@
 import axios from "axios";
 import React, { use, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { fetchFoodDetails } from "../../service/FoodService";
+import { useContext } from "react";
+import { StoreContext } from "../../context/StoreContext";
 
 function FoodDetails() {
   const id = useParams();
+  const { increaseQuantity } = useContext(StoreContext);
+  const navigate = useNavigate();
 
-  const [data, setData] = useState({
-    category: "",
-    name: "",
-    price: 0,
-    description: "",
-    imageUrl: "",
-  });
+  const [data, setData] = useState({});
 
   useEffect(() => {
     const loadFoodDetails = async () => {
@@ -27,6 +25,11 @@ function FoodDetails() {
     };
     loadFoodDetails();
   }, [id]);
+
+  const addToCart = () => {
+    increaseQuantity(data.id);
+    navigate("/cart");
+  };
 
   return (
     <section className="py-5">
@@ -53,6 +56,7 @@ function FoodDetails() {
               <button
                 className="btn btn-outline-dark flex-shrink-0"
                 type="button"
+                onClick={addToCart}
               >
                 <i className="bi-cart-fill me-1"></i>
                 Add to cart

@@ -8,6 +8,8 @@ import Header from "./component/Header/Header.jsx";
 import FoodDetails from "./pages/FoodDetails/FoodDetails.jsx";
 import Cart from "./pages/Cart/Cart.jsx";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder.jsx";
+import Login from "./component/Login/Login.jsx";
+import Register from "./component/Register/Register.jsx";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/food/:id" element={<FoodDetails />} />
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/order" element={<PlaceOrder />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
       </Routes>
     </div>
   );
