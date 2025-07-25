@@ -6,10 +6,15 @@ export const StoreContext = createContext(null);
 export const StoreContextProvider = (props) => {
   const [foodList, setFoodList] = useState([]);
 
+  const [token, setToken] = useState("");
+
   useEffect(() => {
     async function loadData() {
       const data = await fetchFoodList();
       setFoodList(data);
+      if (localStorage.getItem("token")) {
+        setToken(localStorage.getItem("token"));
+      }
     }
 
     loadData();
@@ -19,6 +24,7 @@ export const StoreContextProvider = (props) => {
   const increaseQuantity = (foodID) => {
     setQuantities((prev) => ({ ...prev, [foodID]: (prev[foodID] || 0) + 1 }));
   };
+
   const decreaseQuantity = (foodID) => {
     setQuantities((prev) => ({
       ...prev,
@@ -41,7 +47,9 @@ export const StoreContextProvider = (props) => {
     decreaseQuantity,
     quantities,
     removeFromCart,
-    setQuantities
+    setQuantities,
+    token,
+    setToken,
   };
 
   return (

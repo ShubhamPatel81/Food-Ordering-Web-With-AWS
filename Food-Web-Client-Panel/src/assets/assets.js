@@ -8,13 +8,15 @@ import momo from './images/momo.png';
 import samosa from './images/samosa1.jpeg';
 import desert from './images/desert2.jpg';
 import iceCream from './images/ice_cream1.jpg';
+import profile from './images/profile.png'
 
 
 
 
-const assets = {
+export const assets = {
   logo,
   cart,
+  profile
 
 };
 

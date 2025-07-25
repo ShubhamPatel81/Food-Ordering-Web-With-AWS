@@ -11,11 +11,13 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder.jsx";
 import Login from "./component/Login/Login.jsx";
 import Register from "./component/Register/Register.jsx";
 
+import { ToastContainer, toast } from 'react-toastify';
+
 function App() {
   return (
     <div>
       <MenuBar />
-
+      <ToastContainer/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<ExploreFood />} />

@@ -7,10 +7,16 @@ import { StoreContext } from "../context/StoreContext.jsx";
 const MenuBar = () => {
   const [active, setActive] = useState("home");
 
-  const { quantities } = useContext(StoreContext);
+  const { quantities, token, setToken } = useContext(StoreContext);
   const uniqueItemsInCart = Object.values(quantities).filter(
     (qty) => qty > 0
   ).length;
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken("");
+    navigate("/");
+  };
 
   const navigate = useNavigate();
 
@@ -92,25 +98,59 @@ const MenuBar = () => {
                 </span>
               </div>
 
-              <button
-                className="btn btn-outline-primary"
-                type="submit"
-                onClick={() => {
-                  navigate("/login");
-                }}
-              >
-                Login
-              </button>
+              {!token ? (
+                <>
+                  <button
+                    className="btn btn-outline-primary"
+                    type="submit"
+                    onClick={() => {
+                      navigate("/login");
+                    }}
+                  >
+                    Login
+                  </button>
 
-              <button
-                className="btn btn-outline-success"
-                type="submit"
-                onClick={() => {
-                  navigate("/register");
-                }}
-              >
-                Register
-              </button>
+                  <button
+                    className="btn btn-outline-success"
+                    type="submit"
+                    onClick={() => {
+                      navigate("/register");
+                    }}
+                  >
+                    Register
+                  </button>
+                </>
+              ) : (
+                <div className="dropdown text-end">
+                  <a
+                    href=""
+                    className="d-block link-body-emphasis text-decoration-none dropdown-toggle "
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src={assets.profile}
+                      alt=""
+                      width={32}
+                      height={32}
+                      className="rounded-circle"
+                    />
+                  </a>
+                  <ul className="dropdown-menu text-small ">
+                    <li
+                      className="dropdown-item"
+                      onClick={() => navigate("/myorders")}
+                    >
+                      {" "}
+                      Orders
+                    </li>
+                    <li className="dropdown-item" onClick={logout}>
+                      {" "}
+                      Logout
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
