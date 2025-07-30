@@ -5,8 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login } from "../../service/AuthServiece";
 import { StoreContext } from "../../context/StoreContext";
-function Login() {
-  const { setToken } = useContext(StoreContext);
+const Login = () => {
+  const { setToken, loadCartData } = useContext(StoreContext);
 
   const navigate = useNavigate();
 
@@ -29,13 +29,14 @@ function Login() {
       if (response.status == 200) {
         setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
+        await loadCartData(response.data.token);
         navigate("/");
       } else {
         toast.error("Login Failed 1 !!!");
       }
     } catch (error) {
       toast.error("Login Failed 2 !!!");
-      console.log("error while login",error)
+      console.log("error while login", error);
     }
   };
   return (
@@ -136,6 +137,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

@@ -11,13 +11,14 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder.jsx";
 import Login from "./component/Login/Login.jsx";
 import Register from "./component/Register/Register.jsx";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import MyOrders from "./pages/MyOrders/MyOrders.jsx";
 
 function App() {
   return (
     <div>
       <MenuBar />
-      <ToastContainer/>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<ExploreFood />} />
@@ -27,6 +28,7 @@ function App() {
         <Route path="/order" element={<PlaceOrder />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/myorders" element={<MyOrders />}></Route>
       </Routes>
     </div>
   );

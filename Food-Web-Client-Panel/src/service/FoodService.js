@@ -4,11 +4,12 @@ const API_URL = "http://localhost:8080/api/foods";
 
 export const fetchFoodList = async () => {
   try {
-    const respinse = await axios.get(API_URL);
+    const response = await axios.get(API_URL);
     // console.log("Food list fetched successfully:", respinse.data);
-    return respinse.data;
+    return response.data;
   } catch (error) {
-    toast.error("Error fetching food list:", error);
+    console.error("Error fetching food list:", error);
+    toast.error("Error fetching(Client) food list 1: FoodService.js ");
   }
 };
 
@@ -20,7 +21,8 @@ export const fetchFoodDetails = async (id) => {
       return response.data;
     }
   } catch (error) {
-    toast.error("Error fetching food details:", error);
+    console.error("Error fetching food list:", error);
+    toast.error("Error fetching(Client) food list 2: FoodService.js ");
     throw error;
   }
 };

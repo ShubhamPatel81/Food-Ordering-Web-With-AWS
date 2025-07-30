@@ -68,6 +68,7 @@ function Register() {
                       onChange={onChnageHandler}
                       value={data.email}
                       required
+                      
                     />
                     <label htmlFor="floatingInput">Email address</label>
                   </div>

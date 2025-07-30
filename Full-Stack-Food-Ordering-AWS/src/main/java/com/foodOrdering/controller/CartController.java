@@ -20,19 +20,19 @@ private final CartService cartService;
     @PostMapping
     public CartResponse addToCart(@RequestBody CartRequest request){
        String foodId= request.getFoodId();
+//        System.out.println("HIT ADD TO CART API");
        if (foodId == null || foodId.isEmpty()){
-           throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,"Food id is required CartController");
+           throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,"Food id is required CartController 1 ");
        }
       return cartService.addToCart(request);
     }
-
 
     @GetMapping
     public CartResponse getCart(){
          return cartService.getCart();
     }
 
-    @DeleteMapping
+    @DeleteMapping("/clear")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void clearCart(){
         cartService.clearCart();
@@ -42,7 +42,7 @@ private final CartService cartService;
     public  CartResponse removeFroMCart(@RequestBody  CartRequest request){
         String foodId= request.getFoodId();
         if (foodId == null || foodId.isEmpty()){
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,"Food id is required CartController");
+            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,"Food id is required CartController 2 ");
         }
       return   cartService.removeFromCart(request);
     }

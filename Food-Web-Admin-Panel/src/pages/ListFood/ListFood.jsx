@@ -1,8 +1,8 @@
 import React, { use, useEffect } from "react";
 import "./ListFood.css"; // Assuming you have a CSS file for styling
-import axios from "axios";
+
 import { toast } from "react-toastify";
-import { deleteFood, getFoodList } from "../../services/FoodService";
+import { deleteFood, getFoodList } from "../../services/FoodService.js";
 const ListFood = () => {
   /** @type {[{ imageUrl: string, name: string, category: string, price: number }[], Function]} */
   const [list, setList] = React.useState([]);
@@ -12,7 +12,8 @@ const ListFood = () => {
       const data = await getFoodList();
       setList(data);
     } catch (error) {
-      toast.error("Error fetching food list:", error);
+      console.error("Error fetching food list 1 -> ", error);
+      toast.error("Error fetching food list 2 -> ");
     }
   };
 

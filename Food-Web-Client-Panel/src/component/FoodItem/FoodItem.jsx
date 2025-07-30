@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { StoreContext } from "../../context/StoreContext";
+import { StoreContext } from "../../context/StoreContext.jsx";
 
 function FoodItem({ name, description, id, imageUrl, price }) {
   const { increaseQuantity, decreaseQuantity, quantities } =
