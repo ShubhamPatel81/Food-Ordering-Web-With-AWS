@@ -11,7 +11,8 @@ import java.util.List;
 
 
 @Document(collection = "orders")
-@Data@Builder
+@Data
+@Builder
 public class OrderEntity {
 
     @Id

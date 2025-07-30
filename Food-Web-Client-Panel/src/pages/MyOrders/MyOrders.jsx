@@ -3,14 +3,14 @@ import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
 
 function MyOrders() {
-  // @ts-ignore
   const { token } = useContext(StoreContext);
-  /** @type {Array} */
   const [data, setData] = useState([]);
+
   const fetchOrders = async () => {
     const response = await axios.get("http://localhost:8080/api/orders", {
       headers: { Authorization: `Bearer ${token}` },
     });
+    console.log(response.data); // See what's coming from DB
     setData(response.data);
   };
 
@@ -24,40 +24,54 @@ function MyOrders() {
     <div className="container">
       <div className="py-5 row justify-content-center">
         <div className="col-11 cart">
-          <table className="table table-responsive">
+          <h3 className="mb-4">My Orders</h3>
+          <table className="table table-bordered table-responsive">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Items</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
             <tbody>
               {data.map((order, index) => (
                 <tr key={index}>
                   <td>
                     <img
                       src={
-                        order.orderedItems?.[0]?.image || "/default-image.png"
+                        order.orderItemList?.[0]?.image || "/default-image.png"
                       }
-                      alt=""
+                      alt="Product"
                       height={45}
                       width={45}
                     />
                   </td>
                   <td>
-                    {Array.isArray(order.orderedItems)
-                      ? order.orderedItems.map((item, idx) => (
+                    {Array.isArray(order.orderItemList) &&
+                    order.orderItemList.length > 0
+                      ? order.orderItemList.map((item, idx) => (
                           <span key={idx}>
-                            {item.name} * {item.quantity}
-                            {idx < order.orderedItems.length - 1 ? ", " : ""}
+                            {item.name
+                              ? `${item.name} x ${item.quantity}`
+                              : "Unnamed item"}
+                            {idx < order.orderItemList.length - 1 ? ", " : ""}
                           </span>
                         ))
                       : "No items"}
                   </td>
+
                   <td>₹{order.amount}</td>
-                  <td>
-                    Items:{" "}
-                    {Array.isArray(order.orderedItems)
-                      ? order.orderedItems.length
-                      : 0}
-                  </td>
-                  <td className="fw-bold text-capitalize">
+                  <td className="text-capitalize fw-bold">
                     ● {order.orderStatus}
                   </td>
+                  <td>{order.userAddress}</td>
+                  <td>{order.email}</td>
+                  <td>{order.phoneNumber}</td>
+
                   <td>
                     <button
                       className="btn btn-sm btn-warning"

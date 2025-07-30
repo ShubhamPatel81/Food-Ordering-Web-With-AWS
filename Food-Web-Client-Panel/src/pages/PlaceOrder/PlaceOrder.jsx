@@ -38,7 +38,7 @@ const PlaceOrder = () => {
       userAddress: `${data.firstName} ${data.lastName} ${data.address} ${data.city} ${data.state} ${data.zip}`,
       phoneNumber: data.phoneNumber,
       email: data.email,
-      orderedItems: cartItems.map((item) => ({
+      orderItems: cartItems.map((item) => ({
         foodId: item.foodId,
         quantity: quantities[item.id],
         price: item.price * quantities[item.id],
@@ -142,17 +142,17 @@ const PlaceOrder = () => {
   };
 
   const clearCart = async () => {
-  // console.log("Attempting to clear cart...");
-  try {
-    await axios.delete("http://localhost:8080/api/cart/clear", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    setQuantities({});
-  } catch (error) {
-    console.error("Cart clearing error:", error);
-    toast.error("Error While Clearing the cart (PlaceOrder.jsx)");
-  }
-};
+    // console.log("Attempting to clear cart...");
+    try {
+      await axios.delete("http://localhost:8080/api/cart/clear", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setQuantities({});
+    } catch (error) {
+      console.error("Cart clearing error:", error);
+      toast.error("Error While Clearing the cart (PlaceOrder.jsx)");
+    }
+  };
 
   //cart items
   const cartItems = foodList.filter((food) => quantities[food.id] > 0);

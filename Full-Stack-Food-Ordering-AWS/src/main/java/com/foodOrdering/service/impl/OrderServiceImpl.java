@@ -37,20 +37,24 @@ public class OrderServiceImpl implements OrderService {
     private CartRepository cartRepository;
     @Override
     public OrderResponse createOrderWithPayment(OrderRequest request) throws RazorpayException {
-       OrderEntity newOrder = convertToEntity(request);
-       newOrder =orderRepository.save(newOrder);
-       //create razorPay order
-        RazorpayClient razorpayClient = new RazorpayClient(RAZORPAY_KEY,RAZORPAY_SECRET);
+        OrderEntity newOrder = convertToEntity(request);
+
+        // Create Razorpay order
+        RazorpayClient razorpayClient = new RazorpayClient(RAZORPAY_KEY, RAZORPAY_SECRET);
         JSONObject orderRequest = new JSONObject();
-        orderRequest.put("amount",(int)newOrder.getAmount()*100);
-        orderRequest.put("currency","INR");
-        orderRequest.put("payment_capture" ,1);
-        Order razorpayOrder =  razorpayClient.orders.create(orderRequest);
-//        System.out.println("Saving Order with razorpayOrderId: " + razorpayOrder.get("id"));
-        String loggedInUserId =  userService.findByUserId();
+        orderRequest.put("amount", (int) newOrder.getAmount() * 100); // amount in paise
+        orderRequest.put("currency", "INR");
+        orderRequest.put("payment_capture", 1);
+
+        Order razorpayOrder = razorpayClient.orders.create(orderRequest);
+
+        // Add Razorpay + user data
         newOrder.setRazorpayOrderId(razorpayOrder.get("id"));
-        newOrder.setUserId(loggedInUserId);
+        newOrder.setUserId(userService.findByUserId());
+
+        // ✅ Save only once — now includes orderItemList
         newOrder = orderRepository.save(newOrder);
+
         return convertToResponse(newOrder);
     }
 
@@ -66,7 +70,7 @@ public class OrderServiceImpl implements OrderService {
         OrderEntity existingOrder = orderRepository.findByRazorpayOrderId(razorpayOrderId)
                 .orElseThrow(() -> new RuntimeException("Order Not found (orderServiceImpl 1) "));
 
-        System.out.println("Looking for order with razorpayOrderId: " + razorpayOrderId);
+//        System.out.println("Looking for order with razorpayOrderId: " + razorpayOrderId);
 
         existingOrder.setOrderStatus(status);
 //        existingOrder.setRazorpayOrderId(razorpayOrderId);
