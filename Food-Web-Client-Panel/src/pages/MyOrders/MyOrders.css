@@ -1,0 +1,9 @@
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+  transition: background 0.3s ease;
+}
+
+.badge {
+  font-size: 0.8rem;
+  padding: 0.5em;
+}

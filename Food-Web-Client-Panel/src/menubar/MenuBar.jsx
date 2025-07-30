@@ -93,7 +93,7 @@ const MenuBar = () => {
               <div className="position-relative">
                 <Link to={"/cart"}>
                   {" "}
-                  <img src={assets.cart} alt="cart" height={40} width={40} />
+                  <img src={assets.cart} alt="cart" height={28} width={29} />
                 </Link>
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {uniqueItemsInCart}
@@ -103,7 +103,7 @@ const MenuBar = () => {
               {!token ? (
                 <>
                   <button
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-primary btn-sm"
                     type="submit"
                     onClick={() => {
                       navigate("/login");
@@ -113,7 +113,7 @@ const MenuBar = () => {
                   </button>
 
                   <button
-                    className="btn btn-outline-success"
+                    className="btn btn-outline-success btn-sm"
                     type="submit"
                     onClick={() => {
                       navigate("/register");

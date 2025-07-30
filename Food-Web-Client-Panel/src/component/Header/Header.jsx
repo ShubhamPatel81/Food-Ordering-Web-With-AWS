@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "./Header.css";
 function Header() {
   return (
     <div>
-      <div className="p-4 mb-4 bg-light rounded-3 mt-1">
+      <div className="p-4 mb-4 bg-light rounded-3 mt-1 header">
         <div className="container-fluid py-5">
           <h1 className="display-4 fw-bold ">Order Your Food Here </h1>
           <p className="col-md-8 fs-4">

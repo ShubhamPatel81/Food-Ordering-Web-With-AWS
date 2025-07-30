@@ -23,7 +23,7 @@ public class OrderController {
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public OrderResponse createOrderWithPayment(@RequestBody OrderRequest request) throws RazorpayException {
-        System.out.println("Received order with items: " + request.getOrderItems());
+//        System.out.println("Received order with items: " + request.getOrderItems());
         return orderService.createOrderWithPayment(request);
 
     }

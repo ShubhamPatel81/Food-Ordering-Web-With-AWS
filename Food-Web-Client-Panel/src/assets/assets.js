@@ -11,13 +11,14 @@ import iceCream from './images/ice_cream1.jpg';
 import profile from './images/profile.png'
 
 
+import delivery from './images/fastdeliver.png'
 
 
 export const assets = {
   logo,
   cart,
-  profile
-
+  profile,
+  delivery
 };
 
 export default assets;
