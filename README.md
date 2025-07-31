@@ -31,10 +31,6 @@ A full-stack food ordering application built using **React.js** (frontend) and *
   - Add items to cart and place orders
   - Checkout with Razorpay payment gateway
 
-- **Vendor Panel**
-  - Add/manage food items
-  - View and process orders related to their restaurants
-
 - **Razorpay Integration**
   - Create orders from backend
   - Handle payment success/failure
@@ -53,9 +49,9 @@ A full-stack food ordering application built using **React.js** (frontend) and *
 - `controllers/` – REST API endpoints
 - `services/` – Business logic and service layer
 - `security/` – JWT filter, user details, token provider
-- `models/` & `repositories/` – JPA entities and data access
+- `entity/` & `repositories/` – JPA entities and data access
 - `config/` – AWS S3, Razorpay, security configuration
-- `dto/` – Data Transfer Objects for requests and responses
+- `dto/request/` – Data Transfer Objects for requests and responses
 
 ### Frontend (`/react-app`)
 - `components/` – Reusable UI elements (NavBar, Cards, Forms)
