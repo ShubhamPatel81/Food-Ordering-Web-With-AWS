@@ -4,7 +4,7 @@ A full-stack food ordering application built using **React.js** (frontend) and *
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Frontend**: React.js, Axios, React Router
 - **Backend**: Spring Boot, Spring Security, JWT
@@ -14,11 +14,11 @@ A full-stack food ordering application built using **React.js** (frontend) and *
 
 ---
 
-## ✅ Features
+## Features
 
 - **User Authentication & Authorization**
   - Login & registration using JWT
-  - Role-based access control (admin, vendor, customer)
+  - Role-based access control (admin, customer)
   - Secure APIs with Spring Security
 
 - **Admin Panel**
@@ -43,7 +43,7 @@ A full-stack food ordering application built using **React.js** (frontend) and *
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ### Backend (`/spring-boot-app`)
 - `controllers/` – REST API endpoints
@@ -62,7 +62,7 @@ A full-stack food ordering application built using **React.js** (frontend) and *
 
 ---
 
-## ⚙️ How to Run
+##  How to Run
 
 ### Backend Setup
 1. Update `application.properties` with:
